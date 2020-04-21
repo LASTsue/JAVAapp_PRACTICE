@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.5.0.js"></script>
+</head>
+<script>
+        function postData(e) {
+            var formData = new FormData();
+            formData.append("username",$("#username").val());
+            formData.append("myfile",$("#file-upload")[0].files[0]);
+            $.ajax({
+                url:"user/upload",
+                type:"post",
+                data:formData,
+                contentType:false,
+                processData: false,
+            });
+        }
+</script>
+<body>
+    <div>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <input type="file" id="file-upload" name="upload"/><input type="button" value="上传" onclick="postData()"/>
+        </form>
+    </div>
+</body>
+</html>
